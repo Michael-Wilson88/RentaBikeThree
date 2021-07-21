@@ -1,5 +1,7 @@
 package com.example.rentabikethree.service.serviceimpl.bikeserviceimpl;
 
+import com.example.rentabikethree.domain.bike.Bike;
+import com.example.rentabikethree.payload.request.BikeRequest;
 import com.example.rentabikethree.repository.bikerepository.BikeRepository;
 import com.example.rentabikethree.service.BikeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,4 +20,8 @@ public class BikeServiceImpl implements BikeService {
     }
 
 
+    public void createBike(BikeRequest bikeRequest) {
+
+
+    }
 }
