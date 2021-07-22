@@ -20,16 +20,7 @@ public class Bike {
     private LocalDate returnDate;
     private boolean isRented;
 
-    public Bike(long id, String brand, String bikeNumber, String frameNumber, double baseRentalPrice, long rentalDays, double rentalPrice, LocalDate returnDate, boolean isRented) {
-        this.id = id;
-        this.brand = brand;
-        this.bikeNumber = bikeNumber;
-        this.frameNumber = frameNumber;
-        this.baseRentalPrice = baseRentalPrice;
-        this.rentalDays = rentalDays;
-        this.rentalPrice = rentalPrice;
-        this.returnDate = returnDate;
-        this.isRented = isRented;
+    public Bike() {
     }
 
     public long getId() {

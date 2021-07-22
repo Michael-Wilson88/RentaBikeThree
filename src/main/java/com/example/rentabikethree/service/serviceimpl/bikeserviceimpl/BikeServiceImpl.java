@@ -1,7 +1,7 @@
 package com.example.rentabikethree.service.serviceimpl.bikeserviceimpl;
 
 import com.example.rentabikethree.domain.bike.Bike;
-import com.example.rentabikethree.payload.request.BikeRequest;
+import com.example.rentabikethree.payload.request.CreateBikeRequest;
 import com.example.rentabikethree.repository.bikerepository.BikeRepository;
 import com.example.rentabikethree.service.BikeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,17 @@ public class BikeServiceImpl implements BikeService {
     }
 
 
-    public void createBike(BikeRequest bikeRequest) {
+    public void createBike(CreateBikeRequest createBikeRequest) {
 
+        Bike bike = new Bike();
 
+        bike.setBrand(createBikeRequest.getBrand());
+        bike.setBikeNumber(createBikeRequest.getBikeNumber());
+        bike.setFrameNumber(createBikeRequest.getFrameNumber());
+        bike.setBaseRentalPrice(createBikeRequest.getBaseRentalPrice());
+
+        bikeRepository.save(bike);
     }
+
+
 }
