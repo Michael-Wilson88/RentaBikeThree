@@ -1,13 +1,15 @@
-package com.example.rentabikethree.payload.request;
+package com.example.rentabikethree.payload.request.createrequest;
 
-import java.time.LocalDate;
+import javax.validation.constraints.Size;
 
-public class CreateBikeRequest {
+public class CreateChildBike {
 
     private long id;
     private String brand;
     private String bikeNumber;
     private String frameNumber;
+
+    @Size(min = 10, max = 10)
     private double baseRentalPrice;
 
     public long getId() {

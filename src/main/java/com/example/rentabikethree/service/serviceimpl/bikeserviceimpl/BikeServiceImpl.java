@@ -1,7 +1,7 @@
 package com.example.rentabikethree.service.serviceimpl.bikeserviceimpl;
 
 import com.example.rentabikethree.domain.bike.Bike;
-import com.example.rentabikethree.payload.request.CreateBikeRequest;
+import com.example.rentabikethree.payload.request.createrequest.CreateBikeRequest;
 import com.example.rentabikethree.repository.bikerepository.BikeRepository;
 import com.example.rentabikethree.service.BikeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +31,15 @@ public class BikeServiceImpl implements BikeService {
 
         bikeRepository.save(bike);
     }
-
-
+//
+//    if (rentalDays == 1) {
+//        return  rentalPrice = bike.getBasePrice() * 1.25;
+//    }
+//        if (rentalDays == 2)
+//
+//    {
+//        return rentalPrice = bike.getBasePrice() * 2.25;
+//    }
+//        else if (rentalDays >= 3) {
+//        return rentalPrice = bike.getBasePrice() + (rentalDays * 7.5);
 }
