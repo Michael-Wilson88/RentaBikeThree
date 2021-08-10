@@ -1,11 +1,16 @@
 package com.example.rentabikethree.service.serviceimpl.bikeserviceimpl;
 
 import com.example.rentabikethree.domain.bike.Bike;
+import com.example.rentabikethree.exceptions.BikeNotFoundException;
 import com.example.rentabikethree.payload.request.createrequest.CreateBikeRequest;
+import com.example.rentabikethree.payload.response.ResponseBuilder;
 import com.example.rentabikethree.repository.bikerepository.BikeRepository;
 import com.example.rentabikethree.service.BikeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 // TODO: 20-7-2021 Bouw een responseclass met een ResponseBuilder, hierin kun je Bike class definiëren
 
@@ -30,6 +35,17 @@ public class BikeServiceImpl implements BikeService {
         bike.setBaseRentalPrice(createBikeRequest.getBaseRentalPrice());
 
         bikeRepository.save(bike);
+    }
+
+    public ResponseEntity<?> getBikeByBikeNumber(String bikeNumber) {
+
+        Optional<Bike> optionalBike = bikeRepository.findByBikeNumber(bikeNumber);
+        if (optionalBike.isEmpty()) {
+            throw new BikeNotFoundException(bikeNumber);
+        }
+        Bike bike = optionalBike.get();
+
+        return ResponseEntity.ok(ResponseBuilder.bikeResponse(bike));
     }
 //
 //    if (rentalDays == 1) {
