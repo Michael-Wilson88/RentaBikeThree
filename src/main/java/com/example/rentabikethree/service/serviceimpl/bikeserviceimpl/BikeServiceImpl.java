@@ -1,12 +1,14 @@
 package com.example.rentabikethree.service.serviceimpl.bikeserviceimpl;
 
 import com.example.rentabikethree.domain.bike.Bike;
+import com.example.rentabikethree.exceptions.BikeExistsException;
 import com.example.rentabikethree.exceptions.BikeNotFoundException;
 import com.example.rentabikethree.payload.request.createrequest.CreateBikeRequest;
 import com.example.rentabikethree.payload.response.ResponseBuilder;
 import com.example.rentabikethree.repository.bikerepository.BikeRepository;
 import com.example.rentabikethree.service.BikeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,10 @@ public class BikeServiceImpl implements BikeService {
     public void createBike(CreateBikeRequest createBikeRequest) {
 
         Bike bike = new Bike();
+
+        if (bikeRepository.existsByBikeNumber(createBikeRequest.getBikeNumber())) {
+            throw new BikeExistsException(createBikeRequest.getBikeNumber());
+        }
 
         bike.setBrand(createBikeRequest.getBrand());
         bike.setBikeNumber(createBikeRequest.getBikeNumber());
